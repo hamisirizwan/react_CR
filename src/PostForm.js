@@ -3,22 +3,62 @@ import axios from "axios";
 
 function PostForm() {
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
   const hundleSubmit = (e) => {
     e.preventDefault();
     console.log(name);
+    setLoading(true);
+    console.log(loading);
+    // setTimeout(NotifyLoading(), 3000);
+    // NotifyLoading();
     axios
       .post("http://localhost:5000/api/v1/todos", {
         name: name,
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setLoading(true);
+        console.log(res);
+        console.log(loading);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(true);
+        console.log(err);
+      });
+
+    NotifyError();
     setName("");
   };
   const handleChange = (e) => {
     setName(e.target.value);
   };
+  const NotifyLoading = () => {
+    if (loading === true) {
+      document.getElementById("loading").style.display = "block";
+    } else {
+      document.getElementById("loading").style.display = "none";
+    }
+  };
+  const NotifyError = () => {
+    if (error === true) {
+      document.getElementById("error").style.display = "block";
+    } else {
+      document.getElementById("error").style.display = "none";
+    }
+  };
   return (
     <div>
+      <div className="d-flex">
+        <h5 className="mt-5 text-success d-none" id="loading">
+          loading.....
+        </h5>
+        <h5 className="mt-5 text-danger d-none" id="error">
+          please enter your name
+        </h5>
+      </div>
+
       <form>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
