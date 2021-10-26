@@ -3,7 +3,7 @@ import PostForm from "./PostForm";
 
 function App() {
   return (
-    <div className="App container">
+    <div className="app_container">
       <div className="row">
         <div className="col">
           <DataFetching />

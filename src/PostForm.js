@@ -50,15 +50,6 @@ function PostForm() {
   };
   return (
     <div>
-      <div className="d-flex">
-        <h5 className="mt-5 text-success d-none" id="loading">
-          loading.....
-        </h5>
-        <h5 className="mt-5 text-danger d-none" id="error">
-          please enter your name
-        </h5>
-      </div>
-
       <form>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
@@ -85,7 +76,7 @@ function PostForm() {
           Submit
         </button>
       </form>
-      {/* <h4>you entered {name}</h4> */}
+      <h4>you entered {name}</h4>
     </div>
   );
 }

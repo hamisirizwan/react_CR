@@ -14,6 +14,20 @@ function DataFetching() {
         console.log(err);
       });
   }, []);
+  const deleteUser = (e) => {
+    // const id = e.currentTarget.parentNode.getAttribute("key");
+    // const id = e.target.name;
+    console.log("id");
+    // axios
+    //   .delete(`http://localhost:5000/api/v1/todos/${id}`)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
+    // alert("good job");
+  };
   return (
     <div>
       <table className="table">
@@ -21,6 +35,7 @@ function DataFetching() {
           <tr>
             <th scope="col">id</th>
             <th scope="col">name</th>
+            <th scope="col">action</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +43,12 @@ function DataFetching() {
             <tr key={todo._id}>
               <td>{todo._id}</td>
               <td>{todo.name}</td>
+              {/* <td onClick={() => prompt("enter the name")}>
+                <i className="fa fa-pencil text-primary" aria-hidden="true"></i>
+              </td> */}
+              <td onClick={deleteUser}>
+                <i className="fa fa-trash text-danger" aria-hidden="true"></i>
+              </td>
             </tr>
           ))}
         </tbody>
