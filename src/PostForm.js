@@ -49,7 +49,7 @@ function PostForm() {
     }
   };
   return (
-    <div>
+    <div className="container">
       <form>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
