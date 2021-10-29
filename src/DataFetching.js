@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function DataFetching() {
+const DataFetching = () => {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
     axios
@@ -14,9 +14,9 @@ function DataFetching() {
         console.log(err);
       });
   }, []);
-  const deleteUser = (id) => {
+  const deleteUser = async (id) => {
     console.log(id);
-    axios
+    await axios
       .delete(`http://localhost:5000/api/v1/todos/${id}`)
       .then((res) => {
         console.log(res);
@@ -30,9 +30,16 @@ function DataFetching() {
   };
   return (
     <div>
-      <button className="btn btn-success mt-4">
-        <i className="fa fa-user text-primary" aria-hidden="true"></i> ADD TODO
-      </button>
+      <h2>
+        users : <span className="text-primary">{todos.length}</span>
+      </h2>
+      <div className="d-flex">
+        <h4 className="text-success">NAMES: </h4>
+        {todos.map((todo) => (
+          <h4 key={todo._id}>{todo.name}, </h4>
+        ))}
+      </div>
+
       <table className="table">
         <thead>
           <tr>
@@ -64,6 +71,6 @@ function DataFetching() {
       </table>
     </div>
   );
-}
+};
 
 export default DataFetching;
