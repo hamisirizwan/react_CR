@@ -7,10 +7,9 @@ function App() {
       <div className="container">
         <DataFetching />
       </div>
-      {/* <div className="col-12">
-          <PostForm />
-        </div>
-      </div> */}
+      <div className="col-12">
+        <PostForm />
+      </div>
     </div>
   );
 }

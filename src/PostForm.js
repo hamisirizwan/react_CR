@@ -3,14 +3,14 @@ import axios from "axios";
 
 function PostForm() {
   const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(false);
 
   const hundleSubmit = (e) => {
     e.preventDefault();
     console.log(name);
-    setLoading(true);
-    console.log(loading);
+    // setLoading(true);
+    // console.log(loading);
     // setTimeout(NotifyLoading(), 3000);
     // NotifyLoading();
     axios
@@ -18,36 +18,36 @@ function PostForm() {
         name: name,
       })
       .then((res) => {
-        setLoading(true);
+        // setLoading(true);
         console.log(res);
-        console.log(loading);
+        // console.log(loading);
       })
       .catch((err) => {
-        setLoading(false);
-        setError(true);
+        // setLoading(false);
+        // setError(true);
         console.log(err);
       });
 
-    NotifyError();
+    // NotifyError();
     setName("");
   };
   const handleChange = (e) => {
     setName(e.target.value);
   };
-  const NotifyLoading = () => {
-    if (loading === true) {
-      document.getElementById("loading").style.display = "block";
-    } else {
-      document.getElementById("loading").style.display = "none";
-    }
-  };
-  const NotifyError = () => {
-    if (error === true) {
-      document.getElementById("error").style.display = "block";
-    } else {
-      document.getElementById("error").style.display = "none";
-    }
-  };
+  // const NotifyLoading = () => {
+  //   if (loading === true) {
+  //     document.getElementById("loading").style.display = "block";
+  //   } else {
+  //     document.getElementById("loading").style.display = "none";
+  //   }
+  // };
+  // const NotifyError = () => {
+  //   if (error === true) {
+  //     document.getElementById("error").style.display = "block";
+  //   } else {
+  //     document.getElementById("error").style.display = "none";
+  //   }
+  // };
   return (
     <div className="container">
       <form>
@@ -76,7 +76,7 @@ function PostForm() {
           Submit
         </button>
       </form>
-      <h4>you entered {name}</h4>
+      {/* <h4>you entered {name}</h4> */}
     </div>
   );
 }

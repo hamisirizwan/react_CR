@@ -14,20 +14,20 @@ function DataFetching() {
         console.log(err);
       });
   }, []);
-  // const deleteUser = (e) => {
-  //   // const id = e.currentTarget.parentNode.getAttribute("key");
-  //   // const id = e.target.name;
-  //   console.log("id");
-  //   // axios
-  //   //   .delete(`http://localhost:5000/api/v1/todos/${id}`)
-  //   //   .then((res) => {
-  //   //     console.log(res);
-  //   //   })
-  //   //   .catch((err) => {
-  //   //     console.log(err.message);
-  //   //   });
-  //   // alert("good job");
-  // };
+  const deleteUser = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://localhost:5000/api/v1/todos/${id}`)
+      .then((res) => {
+        console.log(res);
+        alert("user deleted sucessfully");
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert(err.message);
+      });
+    // alert("good job");
+  };
   return (
     <div>
       <button className="btn btn-success mt-4">
@@ -48,7 +48,12 @@ function DataFetching() {
               <td>{todo.name}</td>
               <td>
                 <i className="fa fa-pencil text-primary" aria-hidden="true"></i>
-                | <i className="fa fa-trash text-danger" aria-hidden="true"></i>
+                |{" "}
+                <i
+                  className="fa fa-trash text-danger"
+                  aria-hidden="true"
+                  onClick={() => deleteUser(todo._id)}
+                ></i>
               </td>
               {/* <td>
                 <i className="fa fa-trash text-danger" aria-hidden="true"></i>
