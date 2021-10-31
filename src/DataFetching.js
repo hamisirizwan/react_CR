@@ -28,6 +28,16 @@ const DataFetching = () => {
       });
     // alert("good job");
   };
+  const sendSms = async (name) => {
+    console.log(name);
+    await axios
+      .post("http://localhost:5000/api/v1/sms", {
+        name: name,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err.message));
+  };
+
   return (
     <div>
       <h2>
@@ -46,6 +56,7 @@ const DataFetching = () => {
             <th scope="col">id</th>
             <th scope="col">name</th>
             <th scope="col">action</th>
+            <th scope="col">message</th>
           </tr>
         </thead>
         <tbody>
@@ -62,9 +73,13 @@ const DataFetching = () => {
                   onClick={() => deleteUser(todo._id)}
                 ></i>
               </td>
-              {/* <td>
-                <i className="fa fa-trash text-danger" aria-hidden="true"></i>
-              </td> */}
+              <td>
+                <i
+                  className="fa fa-comment text-success"
+                  aria-hidden="true"
+                  onClick={() => sendSms(todo.name)}
+                ></i>
+              </td>
             </tr>
           ))}
         </tbody>
