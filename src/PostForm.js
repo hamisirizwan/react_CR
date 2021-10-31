@@ -6,14 +6,14 @@ function PostForm() {
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(false);
 
-  const hundleSubmit = (e) => {
+  const hundleSubmit = async (e) => {
     e.preventDefault();
     console.log(name);
     // setLoading(true);
     // console.log(loading);
     // setTimeout(NotifyLoading(), 3000);
     // NotifyLoading();
-    axios
+    await axios
       .post("http://localhost:5000/api/v1/todos", {
         name: name,
       })
@@ -51,7 +51,7 @@ function PostForm() {
   return (
     <div className="container">
       <form>
-        <div className="mb-3">
+        <div className="mb-3 mt-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Name
           </label>
