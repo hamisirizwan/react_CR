@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Error from "./Error";
+import Loading from "./Loading";
 
 function PostForm() {
   const [name, setName] = useState("");
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  // const [errorMsg, setErrorMsg] = useState("");
 
   const hundleSubmit = async (e) => {
     e.preventDefault();
+    if (!name) {
+      setError(true);
+
+      return;
+    }
     console.log(name);
-    // setLoading(true);
+    setLoading(true);
     // console.log(loading);
     // setTimeout(NotifyLoading(), 3000);
     // NotifyLoading();
@@ -18,7 +26,7 @@ function PostForm() {
         name: name,
       })
       .then((res) => {
-        // setLoading(true);
+        setLoading(false);
         console.log(res);
         // console.log(loading);
       })
@@ -50,6 +58,8 @@ function PostForm() {
   // };
   return (
     <div className="container">
+      {error && <Error />}
+      {loading && <Loading />}
       <form>
         <div className="mb-3 mt-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
